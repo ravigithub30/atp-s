@@ -50,18 +50,18 @@
   
   
     
-    "><img class="move-icon" src="rock-emoji.png"></button>
+    "><img class="move-icon" src="images/rock-emoji.png"></button>
     <button  class="move-button" onclick="
     pickcomputermove();
     playgame('paper')
     
-    "><img class="move-icon" src="paper-emoji.png"></button>
+    "><img class="move-icon" src="images/paper-emoji.png"></button>
     <button  class="move-button" onclick="
     pickcomputermove();
     
     playgame('scissor')
 
-     "><img class="move-icon" src="scissor-emoji.png"></button>
+     "><img class="move-icon" src="images/scissor-emoji.png"></button>
 
     <p class="jsresult"></p>
     <P class="jsmoves"></P>
@@ -143,7 +143,7 @@
                 scoreboard();
             }
             localStorage.setItem('score', JSON.stringify(score));
-            document.querySelector('.jsmoves').innerHTML = ` you <img src="${playermove}-emoji.png" class="move-icon"> - <img src="${computermove}-emoji.png"class ="move-icon"> computermove`;
+            document.querySelector('.jsmoves').innerHTML = ` you <img src="images/${playermove}-emoji.png" class="move-icon"> - <img src="images/${computermove}-emoji.png"class ="move-icon"> computermove`;
             document.querySelector('.jsresult').innerHTML = result;
             updatescore();
         }
