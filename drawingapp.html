@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Drawing app</title>
+     <style>
+        canvas{
+            border: 10px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="400"></canvas>
+   <br>
+   <button id="butt" onclick="resetCanvas()">reset</button>
+   <select name="" id="myselect" value="">
+    <option value="1">1px</option>
+    <option value="3">3px</option>
+    <option value="7">7px</option>
+    </select>
+   color
+   <select name="" id="myselect2" value="">
+    <option value="black">black</option>
+    <option value="yellow">yellow</option>
+    <option value="violet">violet</option>
+    <option value="white">white</option>
+    <option value="red">red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+   </select>
+  <!-- fill
+   <select name="color" id="myselect3" value="">
+    <option value="black">black</option>
+    <option value="yellow">yellow</option>
+    <option value="violet">violet</option>
+    <option value="white">white</option>
+    <option value="red">red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+   </select> -->
+   <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var isDrawing = false;
+    var lastX = 0;
+    var lastY = 0;
+   
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseleave", stopDrawing);
+  
+    function startDrawing(event) {
+      isDrawing = true;
+      var { offsetX, offsetY } = event;
+      lastX = offsetX;
+      lastY = offsetY;
+      /*
+      var v = document.getElementById("myselect3");
+      var vfill = v.value ;
+  
+      ctx.fillStyle = vfill;
+  
+      ctx.fill(); */
+   
+      ctx.beginPath();
+      ctx.moveTo(offsetX, offsetY);
+      
+    }
+  
+    function draw(event) {
+      if (!isDrawing) return;
+      var { offsetX, offsetY } = event;
+  
+      var deltaX = offsetX - lastX;
+      var deltaY = offsetY - lastY;
+  
+      offsetX += deltaX * 0.01;
+      offsetY += deltaY * 0.01;
+  
+      var v = document.getElementById("myselect");
+      var voption = v.value ;
+  
+      var v = document.getElementById("myselect2");
+      var vcolor = v.value ;
+       
+     
+      ctx.strokeStyle = vcolor;
+      ctx.lineWidth = voption;
+      ctx.lineTo(offsetX, offsetY);
+      ctx.stroke();
+    
+  
+      lastX = offsetX;
+      lastY = offsetY;
+    }
+  
+    function stopDrawing() {
+      isDrawing = false;
+    }
+    function resetCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    </script>
+
+    
+</body>
+</html>
