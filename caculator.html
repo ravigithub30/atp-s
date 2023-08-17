@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="cal.css">
+
+ 
+</head>
+
+
+<body>
+  <div class="calculator">
+ <div class="inputscr"><input class="screen" type="text" id="cal"></div>
+ <div >
+  <input type="button" value="c" onclick="clearInput();">
+  <input type="button" value="d" onclick="deleteit();">
+  <input type="button" value="+" onclick="solve('+');">
+  <input type="button" value="-" onclick="solve('-');"></div>
+  <div>
+  <input type="button" value="7" onclick="solve(7);">
+  <input type="button" value="8" onclick="solve(8);">
+  <input type="button" value="9" onclick="solve(9);">
+  <input type="button" value="%" class="perc" onclick="solve('%');"></div>
+  <div>
+  <input type="button" value="4" onclick="solve(4);">
+  <input type="button" value="5" onclick="solve(5);">
+  <input type="button" value="6" onclick="solve(6);">
+  <input type="button" value="/" onclick="solve('/');"></div>
+  <div> 
+  <input type="button" value="1" onclick="solve(1);">
+  <input type="button" value="2" onclick="solve(2);">
+  <input type="button" value="3" onclick="solve(3);">
+  <input type="button" value="*" onclick="solve('*');"></div>
+  <div>
+  <input type="button" value="0" onclick="solve(0);">
+  <input type="button" value="." onclick="solve('.');">
+  <input type="button" value="=" clas="equal" onclick="equalto();"></div>
+  </div>
+  <script>
+    function solve(val) {
+      var v = document.getElementById("cal");
+      v.value += val;
+    }
+    function equalto() {
+      var expreesion = document.getElementById("cal").value;
+      var result = eval(expreesion);
+      document.getElementById('cal').value = result;
+
+    }
+
+    function clearInput() {
+      var r = document.getElementById("cal"); //clear is an bulilt in function so we cannot use the clear as a function name ok!
+      r.value = "";
+    }
+    function deleteit() {
+      var value = document.getElementById('cal').value;
+      var lenght = value.length;
+      var arr = value.split("");
+      arr.splice(lenght - 1, 1);
+      var newvalue = arr.join("");
+      document.getElementById("cal").value = newvalue;
+      console.log(newvalue)
+    }
+  </script>
+
+
+  <!--
+    
+    <input type="text" id="calcus">
+
+    <button onclick=" calculus()"> click</button>
+    
+    <script>
+        function calculus(){
+           const expression = document.getElementById("calcus").value;
+           const result = eval(expression);
+           document.getElementById("calcus").value = result;
+           
+
+        }
+    </script>
+    <div id="userprofile">
+    <h2>user profile</h2>
+    <p>name: <input  type="text" id="name"></p>
+    <p>email: <span id="email"></span></p>
+    <p>age: <span id="age"></span>
+    </p></div>
+    
+    <script>
+        const user={
+            name: "2+2",
+            email: "ravindra08642@gmail.com",
+            age: 13
+        }
+        const expression = document.getElementById("name").value= user.name;
+        document.getElementById("email").innerHTML= user.email; 
+        document.getElementById("age").innerHTML= user.age;
+
+        const value = document.getElementById("name").value;
+    const result = eval(expression);
+        console.log(result)
+   class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const person1 = new Person('John', 30);
+const person2 = new Person('Jahu', 30);
+person1.greet();
+person2.greet();
+
+     
+    </script> -->
+
+</body>
+
+</html>
